@@ -37,4 +37,4 @@ Technology Stack:
 - Cypress for E2E testing
 - Jest for unit testing
 
-- Purpose: User interface for security teams, developers, and administrators.
+Purpose: User interface for security teams, developers, and administrators.
