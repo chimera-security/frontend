@@ -1,0 +1,11 @@
+.app-container {
+    background-color: #0e0e0e;
+    color: #ffffff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
