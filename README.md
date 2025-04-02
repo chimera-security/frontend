@@ -38,3 +38,22 @@ Technology Stack:
 - Jest for unit testing
 
 Purpose: User interface for security teams, developers, and administrators.
+
+
+mysterious-app/
+├── public/
+│   └── favicon.ico
+├── src/
+│   ├── components/
+│   │   └── LandingPage.jsx
+│   ├── styles/
+│   │   └── animations.css
+│   ├── App.jsx
+│   ├── index.css
+│   └── main.jsx
+├── index.html
+├── tailwind.config.js
+├── postcss.config.js
+├── vite.config.js
+├── package.json
+└── README.md   
