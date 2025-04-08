@@ -5,8 +5,7 @@ import NavLink from '../ui/NavLink';
 function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrollY, setScrollY] = useState(0);
-  
-  useEffect(() => {
+    useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -17,8 +16,8 @@ function Navbar() {
   };
 
   return (
-    <nav 
-      className="backdrop-blur-md bg-dark/40 border-b border-dark-lighter sticky top-0 z-50 transition-all duration-300" 
+    <nav
+      className="backdrop-blur-md bg-dark/40 border-b border-dark-lighter sticky top-0 z-50 transition-all duration-300"
       style={{height: scrollY > 50 ? '70px' : '90px'}}
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-full">
@@ -36,7 +35,7 @@ function Navbar() {
           <NavLink href="#features">Features</NavLink>
           <NavLink href="#how-it-works">How It Works</NavLink>
           <NavLink href="#intelligence">AI Intelligence</NavLink>
-          <NavLink href="#about">About</NavLink>
+          <NavLink href="#contact">Contact</NavLink>
         </div>
         
         <div className="menu-icon lg:hidden" onClick={toggleMenu}>
@@ -50,7 +49,7 @@ function Navbar() {
             <NavLink href="#features">Features</NavLink>
             <NavLink href="#how-it-works">How It Works</NavLink>
             <NavLink href="#intelligence">AI Intelligence</NavLink>
-            <NavLink href="#about">About</NavLink>
+            <NavLink href="#contact">Contact</NavLink>
           </div>
         </div>
         
