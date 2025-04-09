@@ -1,9 +1,13 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
-const NavLink = ({ href, children, external = false }) => {
+const NavLink = ({ href, children, external = false, className = "" }) => {
   const location = useLocation();
+  const navigate = useNavigate();
   const isHomePage = location.pathname === '/';
+  
+  // Define base styling class
+  const baseClass = "text-slate-400 hover:text-white transition-colors relative after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-gradient-to-r after:from-blue-600 after:to-purple-600 after:scale-x-0 after:hover:scale-x-100 after:transition-transform after:duration-300";
   
   // Handle different link types
   const handleClick = (e) => {
@@ -18,15 +22,29 @@ const NavLink = ({ href, children, external = false }) => {
       if (isHomePage) {
         const element = document.getElementById(href.substring(1));
         if (element) {
+          // Adjust offset based on screen size
+          const offset = window.innerWidth >= 1024 ? 100 : 80;
           window.scrollTo({
-            top: element.offsetTop - 100,
+            top: element.offsetTop - offset,
             behavior: 'smooth'
           });
         }
       } 
       // If we're not on the home page, navigate to home page with hash
       else {
-        window.location.href = '/' + href;
+        // Use navigate instead of window.location
+        navigate('/');
+        // Set timeout to allow for navigation to complete before scrolling
+        setTimeout(() => {
+          const element = document.getElementById(href.substring(1));
+          if (element) {
+            const offset = window.innerWidth >= 1024 ? 100 : 80;
+            window.scrollTo({
+              top: element.offsetTop - offset,
+              behavior: 'smooth'
+            });
+          }
+        }, 100);
       }
     }
   };
@@ -38,7 +56,7 @@ const NavLink = ({ href, children, external = false }) => {
         href={href}
         target="_blank"
         rel="noopener noreferrer"
-        className="text-slate-400 hover:text-white transition-colors relative after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-gradient-to-r after:from-blue-600 after:to-purple-600 after:scale-x-0 after:hover:scale-x-100 after:transition-transform after:duration-300"
+        className={`${baseClass} ${className}`}
       >
         {children}
         <svg className="inline-block w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -53,7 +71,7 @@ const NavLink = ({ href, children, external = false }) => {
     return (
       <Link
         to={href}
-        className="text-slate-400 hover:text-white transition-colors relative after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-gradient-to-r after:from-blue-600 after:to-purple-600 after:scale-x-0 after:hover:scale-x-100 after:transition-transform after:duration-300"
+        className={`${baseClass} ${className}`}
       >
         {children}
       </Link>
@@ -65,11 +83,12 @@ const NavLink = ({ href, children, external = false }) => {
     <a
       href={href}
       onClick={handleClick}
-      className="text-slate-400 hover:text-white transition-colors relative after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-gradient-to-r after:from-blue-600 after:to-purple-600 after:scale-x-0 after:hover:scale-x-100 after:transition-transform after:duration-300"
+      className={`${baseClass} ${className}`}
     >
       {children}
     </a>
   );
 };
 
-export default NavLink;
+// Use React.memo for optimization
+export default React.memo(NavLink);

@@ -3,7 +3,7 @@ import { ArrowRight, Brain, Shield, Clock, ChartBar, Zap } from 'lucide-react';
 import SectionHeading from '../ui/SectionHeading';
 import AIVisualization from '../ui/animations/AIVisualization';
 import NavLink from '../ui/NavLink';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function AIIntelligence() {
   const navigate = useNavigate();
@@ -120,9 +120,8 @@ function AIIntelligence() {
               ))}
             </div>
             <div className="flex justify-center md:justify-start mt-8">
-              <a 
-                href="/ai-capabilities" 
-                onClick={handleCapabilitiesClick}
+              <Link 
+                to="/ai-capabilities" 
                 className="relative group inline-block"
               >
                 <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg blur-sm opacity-70 group-hover:opacity-100 transition-all duration-500 group-hover:blur-md"></div>
@@ -130,7 +129,7 @@ function AIIntelligence() {
                   <span className="mr-2 text-white group-hover:text-blue-100 transition-colors duration-300">Learn more about our AI capabilities</span>
                   <ArrowRight className="w-4 h-4 text-blue-400 group-hover:text-blue-300 transition-all duration-300 group-hover:translate-x-1" />
                 </div>
-              </a>
+              </Link>
             </div>
           </div>
         </div>

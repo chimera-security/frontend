@@ -1,3 +1,4 @@
+// frontend/src/pages/AICapabilities.jsx
 import React, { useEffect, useState } from 'react';
 import { ArrowLeft, Brain, Shield, Lock, ChartBar, Clock, Zap, Database, AlertTriangle, Activity, ChevronRight } from 'lucide-react';
 import NavLink from '../components/ui/NavLink';
@@ -7,8 +8,6 @@ function AICapabilities() {
     const navigate = useNavigate();
     const location = useLocation();
     const [activeTab, setActiveTab] = useState(0);
-    
-    // Scroll to top when component mounts
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
@@ -378,7 +377,7 @@ function AICapabilities() {
                 .bg-grid-pattern {
                     background-size: 50px 50px;
                     background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-                                     linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+                                        linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
                 }
                 
                 .text-gradient-blue-purple {

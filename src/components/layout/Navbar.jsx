@@ -15,6 +15,30 @@ function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Add body scroll lock when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMobileMenuOpen]);
+
+  // Add keyboard navigation support
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape' && isMobileMenuOpen) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+    
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isMobileMenuOpen]);
+
   // Scroll to top when route changes
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -76,11 +100,13 @@ function Navbar() {
           <NavLink href="#signup">Join Beta</NavLink>
         </div>
         
-        {/* Mobile Menu Button */}
+        {/* Mobile Menu Button with improved accessibility */}
         <button 
           onClick={toggleMenu}
           className="lg:hidden flex flex-col items-center justify-center w-10 h-10 relative z-20 focus:outline-none group"
           aria-label="Toggle Menu"
+          aria-expanded={isMobileMenuOpen}
+          aria-controls="mobile-menu"
         >
           <span className={`w-6 h-0.5 bg-white mb-1.5 transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
           <span className={`w-6 h-0.5 bg-white mb-1.5 transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : ''}`}></span>
@@ -95,8 +121,9 @@ function Navbar() {
           onClick={toggleMenu}
         />
         
-        {/* Mobile Menu Panel */}
+        {/* Mobile Menu Panel with ID for aria-controls */}
         <div 
+          id="mobile-menu"
           className={`lg:hidden fixed top-20 right-0 bottom-0 w-64 bg-dark-light/90 backdrop-blur-md border-l border-dark-lighter p-6 z-10 transform transition-transform duration-500 ease-in-out ${
             isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
           }`}
