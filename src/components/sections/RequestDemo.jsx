@@ -72,7 +72,7 @@ function RequestDemo() {
         setError('');
         
         try {
-        const apiUrl = import.meta.env.VITE_API_URL || 'https://chimera-backend.vercel.app';
+        const apiUrl = import.meta.env.VITE_API_URL || 'https://chimerabackend.vercel.app/';
         const response = await fetch(`${apiUrl}/api/demo-requests`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
