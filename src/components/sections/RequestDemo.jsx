@@ -54,7 +54,6 @@ function RequestDemo() {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
         
-        // Clear error when user starts typing
         if (errors[name]) {
         setErrors({ ...errors, [name]: null });
         }
@@ -73,16 +72,17 @@ function RequestDemo() {
         setError('');
         
         try {
-        // API call would go here
-        // const apiUrl = import.meta.env.VITE_API_URL || 'https://chimera-backend.vercel.app';
-        // const response = await fetch(`${apiUrl}/api/demo-requests`, {
-        //   method: 'POST',
-        //   headers: { 'Content-Type': 'application/json' },
-        //   body: JSON.stringify(formData),
-        // });
+        const apiUrl = import.meta.env.VITE_API_URL || 'https://chimera-backend.vercel.app';
+        const response = await fetch(`${apiUrl}/api/demo-requests`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(formData),
+        });
         
-        // Simulating API call
-        await new Promise(resolve => setTimeout(resolve, 1500));
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.detail || 'Something went wrong. Please try again later.');
+        }
         
         setIsSuccess(true);
         setFormData({
