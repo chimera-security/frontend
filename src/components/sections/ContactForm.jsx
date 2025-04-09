@@ -52,7 +52,7 @@ function ContactForm() {
         setError('');
         
         try {
-        const apiUrl = import.meta.env.VITE_API_URL || 'https://chimera-security-backend.vercel.app/';
+        const apiUrl = import.meta.env.VITE_API_URL || 'chimerabackend.vercel.app';
         const response = await fetch(`${apiUrl}/api/contacts`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
