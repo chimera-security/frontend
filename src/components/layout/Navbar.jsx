@@ -35,7 +35,7 @@ function Navbar() {
           <NavLink href="#features">Features</NavLink>
           <NavLink href="#how-it-works">How It Works</NavLink>
           <NavLink href="#intelligence">AI Intelligence</NavLink>
-          <NavLink href="#contact">Contact</NavLink>
+          <NavLink href="#signup">Join Beta</NavLink>
         </div>
         
         <div className="menu-icon lg:hidden" onClick={toggleMenu}>
@@ -49,17 +49,18 @@ function Navbar() {
             <NavLink href="#features">Features</NavLink>
             <NavLink href="#how-it-works">How It Works</NavLink>
             <NavLink href="#intelligence">AI Intelligence</NavLink>
-            <NavLink href="#contact">Contact</NavLink>
+            <NavLink href="#signup">Join Beta</NavLink>
+            <NavLink href="#request-demo">Request Demo</NavLink>
           </div>
         </div>
         
-        <button className="relative group hidden lg:flex">
+        <NavLink href="#request-demo" className="relative group hidden lg:flex">
           <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg blur opacity-60 group-hover:opacity-100 transition duration-500"></div>
           <div className="relative px-6 py-3 bg-dark rounded-lg flex items-center">
             <span>Request Demo</span>
             <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
           </div>
-        </button>
+        </NavLink>
       </div>
     </nav>
   );

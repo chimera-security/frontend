@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowRight } from 'lucide-react';
-import SecurityGridAnimation from '../ui/animations/SecurityGridAnimation';
 import IdentityGraphNetwork from '../ui/animations/IdentityGraphNetwork';
-import IdentityKnowledgeGraph from '../ui/animations/IdentityKnowledgeGraph';
+import NavLink from '../ui/NavLink';
 
 function Hero() {
   const [scrollY, setScrollY] = useState(0);
@@ -31,18 +30,20 @@ function Hero() {
             Discover, secure, and manage your non-human identities with advanced AI intelligence that predicts threats before they materialize.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <button className="relative group">
+            <NavLink href="#signup" className="relative group block">
               <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg blur opacity-75 group-hover:opacity-100 transition duration-500"></div>
-              <div className="relative px-8 py-4 bg-dark rounded-lg">
-                Get Started
+              <div className="relative px-8 py-4 bg-dark rounded-lg flex items-center">
+                <span>Get Started</span>
+                <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
               </div>
-            </button>
-            {/* <button className="relative group">
+            </NavLink>
+            <NavLink href="#request-demo" className="relative group block">
               <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg blur opacity-75 group-hover:opacity-100 transition duration-500"></div>
-              <div className="relative px-8 py-4 bg-dark rounded-lg">
-                Watch Demo
+              <div className="relative px-8 py-4 bg-dark rounded-lg flex items-center">
+                <span>Request Demo</span>
+                <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
               </div>
-            </button> */}
+            </NavLink>
           </div>
         </div>
         
@@ -50,8 +51,6 @@ function Hero() {
              style={{perspective: '1000px', transform: `translateY(${scrollY * 0.1}px)`}}>
           <div className="relative w-full aspect-square" 
                style={{transform: `rotateY(${scrollY * 0.03}deg) rotateX(${scrollY * -0.01}deg)`}}>
-            {/* <SecurityGridAnimation /> */}
-            {/* <IdentityKnowledgeGraph /> */}
             <IdentityGraphNetwork />
           </div>
         </div>
