@@ -1,7 +1,11 @@
-chimera-frontend/
+frontend/
 ├── index.html
 ├── package.json 
 ├── vite.config.js
+├── Dockerfile
+├── .env
+├── vercel.json
+├── .nvmrc
 ├── tailwind.config.js 
 ├── postcss.config.js
 └── src/
