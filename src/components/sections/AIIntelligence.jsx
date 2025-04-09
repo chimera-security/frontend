@@ -3,8 +3,11 @@ import { ArrowRight, Brain, Shield, Clock, ChartBar, Zap } from 'lucide-react';
 import SectionHeading from '../ui/SectionHeading';
 import AIVisualization from '../ui/animations/AIVisualization';
 import NavLink from '../ui/NavLink';
+import { useNavigate } from 'react-router-dom';
 
 function AIIntelligence() {
+  const navigate = useNavigate();
+  
   const aiCapabilities = [
     {
       icon: <Brain className="h-6 w-6 text-blue-400" />,
@@ -33,6 +36,13 @@ function AIIntelligence() {
     { value: "3.4×", label: "faster than manual audits" },
     { value: "87%", label: "reduction in false positives" }
   ];
+  
+  // Handle navigation to AI capabilities page
+  const handleCapabilitiesClick = (e) => {
+    e.preventDefault();
+    navigate('/ai-capabilities');
+    window.scrollTo(0, 0);
+  };
 
   return (
     <section id="intelligence" className="py-32 relative overflow-hidden">
@@ -110,13 +120,17 @@ function AIIntelligence() {
               ))}
             </div>
             <div className="flex justify-center md:justify-start mt-8">
-              <NavLink href="/ai-capabilities" className="relative group inline-block">
+              <a 
+                href="/ai-capabilities" 
+                onClick={handleCapabilitiesClick}
+                className="relative group inline-block"
+              >
                 <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg blur-sm opacity-70 group-hover:opacity-100 transition-all duration-500 group-hover:blur-md"></div>
                 <div className="relative px-6 py-3 bg-dark-light/80 backdrop-blur-sm rounded-lg flex items-center border border-dark-lighter group-hover:border-blue-500/50 transition-all duration-300">
                   <span className="mr-2 text-white group-hover:text-blue-100 transition-colors duration-300">Learn more about our AI capabilities</span>
                   <ArrowRight className="w-4 h-4 text-blue-400 group-hover:text-blue-300 transition-all duration-300 group-hover:translate-x-1" />
                 </div>
-              </NavLink>
+              </a>
             </div>
           </div>
         </div>

@@ -109,7 +109,7 @@ function RequestDemo() {
     return (
         <section id="request-demo" className="py-32 bg-gradient-to-b from-dark to-dark-light">
         <div className="max-w-7xl mx-auto px-6">
-            <SectionHeading title="Request Enterprise Demo" />
+            <SectionHeading title="Request More Information" />
             
             <div className="mt-16 grid lg:grid-cols-5 gap-12">
             {/* Left Column - Benefits */}
