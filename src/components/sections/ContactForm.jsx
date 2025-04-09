@@ -52,8 +52,7 @@ function ContactForm() {
         setError('');
         
         try {
-        // Get the API URL from environment or use the default
-        const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+        const apiUrl = import.meta.env.VITE_API_URL || 'https://chimera-security-backend.vercel.app/';
         const response = await fetch(`${apiUrl}/api/contacts`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
