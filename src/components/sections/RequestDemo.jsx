@@ -117,7 +117,7 @@ function RequestDemo() {
                 <div className="relative p-6 backdrop-blur-md bg-dark-light/30 rounded-xl border border-dark-lighter">
                 <h3 className="text-2xl font-bold mb-4 gradient-text">Enterprise-Grade Security</h3>
                 <p className="text-slate-400 mb-6">
-                    See how Chimera Security helps organizations manage and secure machine identities at scale with our comprehensive platform.
+                    See how Chimera Security can help you secure your machine identities and prevent breaches. We are in development and quickly iterating our product to best serve you.
                 </p>
                 
                 <ul className="space-y-4">
@@ -143,20 +143,20 @@ function RequestDemo() {
                 <div className="relative p-6">
                     <div className="flex items-center mb-4">
                     <Calendar className="h-5 w-5 text-blue-400 mr-2" />
-                    <h4 className="text-lg font-semibold">Your Custom Demo Includes</h4>
+                    <h4 className="text-lg font-semibold">Your Custom Info Session Includes</h4>
                     </div>
                     <ul className="space-y-3 text-slate-400">
                     <li className="flex items-start">
                         <div className="h-5 w-5 rounded-full border border-blue-500/50 flex-shrink-0 flex items-center justify-center mr-3 mt-0.5">
                         <div className="h-2 w-2 rounded-full bg-blue-500"></div>
                         </div>
-                        <span>45-minute personalized walkthrough</span>
+                        <span>60-minute personalized session to learn how we can help YOU!</span>
                     </li>
                     <li className="flex items-start">
                         <div className="h-5 w-5 rounded-full border border-blue-500/50 flex-shrink-0 flex items-center justify-center mr-3 mt-0.5">
                         <div className="h-2 w-2 rounded-full bg-blue-500"></div>
                         </div>
-                        <span>Q&A with our security engineers</span>
+                        <span>Q&A with the Co-Founding team</span>
                     </li>
                     <li className="flex items-start">
                         <div className="h-5 w-5 rounded-full border border-blue-500/50 flex-shrink-0 flex items-center justify-center mr-3 mt-0.5">

@@ -40,11 +40,16 @@ function Hero() {
             <NavLink href="#request-demo" className="relative group block">
               <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg blur opacity-75 group-hover:opacity-100 transition duration-500"></div>
               <div className="relative px-8 py-4 bg-dark rounded-lg flex items-center">
-                <span>Request Demo</span>
+                <span>Request Information</span>
                 <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
               </div>
             </NavLink>
           </div>
+        <p className='text-sm text-slate-500'>We are in <span className='font-bold italic text-white '>founder mode</span> and quickly iterating our product to best serve you. Development will take time, but we are committed to building a product that you will love.
+            <br />
+            <br />
+            If you are interested in learning more about our product, please fill out the form below.
+          </p>
         </div>
         
         <div className="relative hidden lg:block" 
