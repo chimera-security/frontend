@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowRight, Mail, User, Check, Bell } from 'lucide-react';
+import { ArrowRight, Mail, AlertTriangle, User, Check, Bell } from 'lucide-react';
 import SectionHeading from '../ui/SectionHeading';
 
 function SignUpForm() {
