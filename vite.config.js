@@ -7,11 +7,12 @@ export default defineConfig({
   ],
   base: '/',
   server: {
-    host: '0.0.0.0',
-    port: 3000,
-    strictPort: true,
-    watch: {
-      usePolling: true
+    proxy: {
+      '/api': {
+        target: 'https://chimerabackend.vercel.app',
+        changeOrigin: true,
+        rewrite: (path) => path
+      }
     }
   }
 })
