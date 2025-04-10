@@ -48,7 +48,7 @@ function Hero() {
         <p className='text-sm text-slate-500'>We are in <span className='font-bold italic text-white '>founder mode</span> and quickly iterating our product to best serve you. Development will take time, but we are committed to building a product that you will love.
             <br />
             <br />
-            If you are interested in learning more about our product, please fill out the form below.
+            If you are interested in learning more about our future releases, please fill out the form below.
           </p>
         </div>
         
