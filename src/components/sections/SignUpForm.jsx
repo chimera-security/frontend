@@ -25,7 +25,7 @@ function SignUpForm() {
         setError('');
         
         try {
-        const apiUrl = import.meta.env.VITE_API_URL || 'https://chimerabackend.vercel.app/';
+        const apiUrl = import.meta.env.VITE_API_URL || 'https://chimerabackend.vercel.app';
         const response = await fetch(`${apiUrl}/api/subscribers`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
