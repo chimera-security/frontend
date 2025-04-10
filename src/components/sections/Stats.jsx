@@ -7,7 +7,7 @@ function Stats() {
       label: 'of organizations experienced incidents related to unmanaged machine identities' 
     },
     { 
-      value: '20:1', 
+      value: '50:1', 
       label: 'typical ratio of machine identities to human users in modern enterprises' 
     },
     { 
