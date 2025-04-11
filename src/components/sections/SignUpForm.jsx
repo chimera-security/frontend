@@ -99,7 +99,7 @@ function SignUpForm() {
                             </div>
                             <h4 className="text-xl font-bold mt-6 mb-2 gradient-text">You're In!</h4>
                             <p className="text-slate-400">
-                            Thanks for joining our beta program. We'll be in touch soon with your exclusive access details.
+                            Thanks for joining our beta program. We'll be in touch soon to schedule a call to see how we can help you.
                             </p>
                         </div>
                         ) : (
