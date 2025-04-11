@@ -1,6 +1,18 @@
 import React, { useState } from 'react';
 import { ArrowRight, Mail, AlertTriangle, User, Check, Bell } from 'lucide-react';
 import SectionHeading from '../ui/SectionHeading';
+import { supabase } from '../../utils/supabaseClient';
+
+function CheckCircle(props) {
+    return (
+        <div className="relative">
+            <div className="absolute inset-0 bg-green-500/20 rounded-full blur-xl animate-pulse-slow"></div>
+            <div className="relative w-16 h-16 bg-dark-light/80 rounded-full flex items-center justify-center border border-green-500/50">
+                <Check className="w-10 h-10 text-green-500" {...props} />
+            </div>
+        </div>
+    );
+}
 
 function SignUpForm() {
     const [email, setEmail] = useState('');
@@ -17,42 +29,42 @@ function SignUpForm() {
         e.preventDefault();
         
         if (!email || !validateEmail(email)) {
-        setError('Please enter a valid email address');
-        return;
+            setError('Please enter a valid email address');
+            return;
         }
         
         setIsSubmitting(true);
         setError('');
         
         try {
-        const apiUrl = import.meta.env.VITE_API_URL || 'https://chimerabackend.vercel.app';
-        const response = await fetch(`${apiUrl}/api/subscribers`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email, name: name || undefined }),
-        });
-        console.log('response status', response.status);
-        console.log('response', response);
-        if (!response.ok) {
-            const errorData = await response.json();
-            console.log('errorData', errorData);
-            throw new Error(errorData.detail || 'Something went wrong. Please try again later.');
-        }
+            // Insert data into Supabase
+            const { data, error: supabaseError } = await supabase
+                .from('subscribers')
+                .insert([
+                    {
+                        email: email,
+                        name: name || null,
+                        created_at: new Date().toISOString()
+                    }
+                ]);
 
-        const data = await response.json();
-        console.log('data', data);
-        
-        setIsSuccess(true);
-        setEmail('');
-        setName('');
-        setTimeout(() => {
-            setIsSuccess(false);
-        }, 5000);
-        
+            if (supabaseError) {
+                throw new Error(supabaseError.message || 'Something went wrong. Please try again later.');
+            }
+
+            setIsSuccess(true);
+            setEmail('');
+            setName('');
+            
+            // Reset success state after 5 seconds
+            setTimeout(() => {
+                setIsSuccess(false);
+            }, 5000);
+            
         } catch (err) {
-        setError(err.message || 'Something went wrong. Please try again later.');
+            setError(err.message || 'Something went wrong. Please try again later.');
         } finally {
-        setIsSubmitting(false);
+            setIsSubmitting(false);
         }
     };
 
@@ -83,10 +95,7 @@ function SignUpForm() {
                         {isSuccess ? (
                         <div className="text-center py-8 max-w-md mx-auto">
                             <div className="inline-flex items-center justify-center">
-                            <div className="relative">
-                                <div className="absolute inset-0 bg-green-500/20 rounded-full blur-xl animate-pulse-slow"></div>
-                                <CheckCircle className="w-16 h-16 text-green-500 relative" />
-                            </div>
+                                <CheckCircle />
                             </div>
                             <h4 className="text-xl font-bold mt-6 mb-2 gradient-text">You're In!</h4>
                             <p className="text-slate-400">
@@ -191,8 +200,8 @@ function SignUpForm() {
                 </div>
                 </div>
             </div>
-            </section>
-        );
-    }
-    
-    export default SignUpForm;    
+        </section>
+    );
+}
+
+export default SignUpForm;

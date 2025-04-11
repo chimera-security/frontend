@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Calendar, Check, AlertTriangle, Building, Users, Briefcase } from 'lucide-react';
 import SectionHeading from '../ui/SectionHeading';
+import { supabase } from '../../utils/supabaseClient';
 
 function RequestDemo() {
     const [formData, setFormData] = useState({
@@ -39,9 +40,9 @@ function RequestDemo() {
         
         if (!formData.name.trim()) newErrors.name = 'Name is required';
         if (!formData.email.trim()) {
-        newErrors.email = 'Email is required';
+            newErrors.email = 'Email is required';
         } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-        newErrors.email = 'Email is invalid';
+            newErrors.email = 'Email is invalid';
         }
         if (!formData.company.trim()) newErrors.company = 'Company name is required';
         if (!formData.teamSize) newErrors.teamSize = 'Team size is required';
@@ -55,7 +56,7 @@ function RequestDemo() {
         setFormData({ ...formData, [name]: value });
         
         if (errors[name]) {
-        setErrors({ ...errors, [name]: null });
+            setErrors({ ...errors, [name]: null });
         }
     };
     
@@ -64,56 +65,52 @@ function RequestDemo() {
         
         const newErrors = validate();
         if (Object.keys(newErrors).length > 0) {
-        setErrors(newErrors);
-        return;
+            setErrors(newErrors);
+            return;
         }
         
         setIsSubmitting(true);
         setError('');
         
         try {
-        const apiUrl = import.meta.env.VITE_API_URL || 'https://chimerabackend.vercel.app';
-        const response = await fetch(`${apiUrl}/api/demo-requests`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-            body: JSON.stringify({
-                name: formData.name,
-                email: formData.email,
-                company: formData.company,
-                teamSize: formData.teamSize,
-                role: formData.role,
-                message: formData.message,
-            }),
-        });
-        
-        if (!response.ok) {
-            try {
-                const errorData = await response.json();
-                throw new Error(errorData.detail || 'Something went wrong. Please try again later.');
-            } catch (e) {
-                throw new Error('Something went wrong. Please try again later.');
+            // Insert data into Supabase
+            const { data, error: supabaseError } = await supabase
+                .from('demo_requests')
+                .insert([
+                    {
+                        name: formData.name,
+                        email: formData.email,
+                        company: formData.company,
+                        team_size: formData.teamSize,
+                        role: formData.role,
+                        message: formData.message || null,
+                        created_at: new Date().toISOString()
+                    }
+                ]);
+
+            if (supabaseError) {
+                throw new Error(supabaseError.message || 'Something went wrong. Please try again later.');
             }
-        }
-        
-        setIsSuccess(true);
-        setFormData({
-            name: '',
-            email: '',
-            company: '',
-            teamSize: '',
-            role: '',
-            message: ''
-        });
-        
-        // Reset success state after 6 seconds
-        setTimeout(() => {
-            setIsSuccess(false);
-        }, 6000);
-        
+            
+            setIsSuccess(true);
+            setFormData({
+                name: '',
+                email: '',
+                company: '',
+                teamSize: '',
+                role: '',
+                message: ''
+            });
+            
+            // Reset success state after 6 seconds
+            setTimeout(() => {
+                setIsSuccess(false);
+            }, 6000);
+            
         } catch (err) {
-        setError(err.message || 'Something went wrong. Please try again later.');
+            setError(err.message || 'Something went wrong. Please try again later.');
         } finally {
-        setIsSubmitting(false);
+            setIsSubmitting(false);
         }
     };
     
