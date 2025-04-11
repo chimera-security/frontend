@@ -80,7 +80,7 @@ function RequestMoreInfo() {
         try {
             // Insert data into Supabase
             const { data, error: supabaseError } = await supabase
-                .from('business_inquiries')
+                .from('request_info')
                 .insert([
                     {
                         company: formData.company,
@@ -103,7 +103,6 @@ function RequestMoreInfo() {
                 interests: []
             });
             
-            // Reset success state after 6 seconds
             setTimeout(() => {
                 setIsSuccess(false);
             }, 6000);
