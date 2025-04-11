@@ -31,11 +31,16 @@ function SignUpForm() {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email, name: name || undefined }),
         });
-        
+        console.log('response status', response.status);
+        console.log('response', response);
         if (!response.ok) {
             const errorData = await response.json();
+            console.log('errorData', errorData);
             throw new Error(errorData.detail || 'Something went wrong. Please try again later.');
         }
+
+        const data = await response.json();
+        console.log('data', data);
         
         setIsSuccess(true);
         setEmail('');
