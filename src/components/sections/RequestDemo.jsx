@@ -75,13 +75,24 @@ function RequestDemo() {
         const apiUrl = import.meta.env.VITE_API_URL || 'https://chimerabackend.vercel.app';
         const response = await fetch(`${apiUrl}/api/demo-requests`, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(formData),
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify({
+                name: formData.name,
+                email: formData.email,
+                company: formData.company,
+                teamSize: formData.teamSize,
+                role: formData.role,
+                message: formData.message,
+            }),
         });
         
         if (!response.ok) {
-            const errorData = await response.json();
-            throw new Error(errorData.detail || 'Something went wrong. Please try again later.');
+            try {
+                const errorData = await response.json();
+                throw new Error(errorData.detail || 'Something went wrong. Please try again later.');
+            } catch (e) {
+                throw new Error('Something went wrong. Please try again later.');
+            }
         }
         
         setIsSuccess(true);
