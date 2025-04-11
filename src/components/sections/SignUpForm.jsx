@@ -71,7 +71,7 @@ function SignUpForm() {
     return (
         <section id="signup" className="py-32 bg-dark">
             <div className="max-w-7xl mx-auto px-6">
-                <SectionHeading title="Get Early Access by Joining Our Beta Program" />
+                <SectionHeading title="Sign Up Early to Help Shape the Product" />
                 <div className="mt-16 max-w-4xl mx-auto">
                 <div className="relative">
                     {/* Background blur effect */}
@@ -88,7 +88,7 @@ function SignUpForm() {
                     <div className="relative z-10">
                         <div className="text-center max-w-2xl mx-auto mb-10">
                         <p className="text-slate-400 text-xl">
-                            Sign up to help shape the future of machine identity protection.
+                            Help us help you protect your machine identity environments.
                         </p>
                         </div>
                         
