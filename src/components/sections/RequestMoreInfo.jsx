@@ -3,7 +3,7 @@ import { Calendar, Check, AlertTriangle, Building, Users, Briefcase } from 'luci
 import SectionHeading from '../ui/SectionHeading';
 import { supabase } from '../../utils/supabaseClient';
 
-function RequestDemo() {
+function RequestMoreInfo() {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -389,7 +389,7 @@ function RequestDemo() {
                         >
                             <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg blur opacity-60 group-hover:opacity-100 transition duration-500"></div>
                             <div className="relative px-6 py-3 bg-dark rounded-lg flex items-center">
-                            <span className="mr-2">{isSubmitting ? 'Processing...' : 'Schedule Demo'}</span>
+                            <span className="mr-2">{isSubmitting ? 'Processing...' : 'Schedule Call'}</span>
                             <Calendar className={`w-4 h-4 transition-transform duration-300 ${isSubmitting ? 'animate-pulse' : 'group-hover:translate-x-1'}`} />
                             </div>
                         </button>
@@ -409,4 +409,4 @@ function RequestDemo() {
     );
 }
 
-export default RequestDemo;
+export default RequestMoreInfo;

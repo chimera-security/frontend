@@ -11,7 +11,7 @@ import Stats from './components/sections/Stats';
 import Features from './components/sections/Features';
 import HowItWorks from './components/sections/HowItWorks';
 import AIIntelligence from './components/sections/AIIntelligence';
-import RequestDemo from './components/sections/RequestDemo';
+import RequestMoreInfo from './components/sections/RequestMoreInfo';
 import SignUpForm from './components/sections/SignUpForm';
 
 // Pages
@@ -25,7 +25,7 @@ function HomePage() {
       <Features />
       <HowItWorks />
       <AIIntelligence />
-      <RequestDemo />
+      <RequestMoreInfo />
       <SignUpForm />
     </>
   );
