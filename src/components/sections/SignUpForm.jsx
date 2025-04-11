@@ -49,12 +49,25 @@ function SignUpForm() {
                 ]);
 
             if (supabaseError) {
-                throw new Error(supabaseError.message || 'Something went wrong. Please try again later.');
+                // Check specifically for duplicate email error
+                if (supabaseError.code === '23505' || 
+                    supabaseError.message.includes('duplicate key value') || 
+                    supabaseError.message.includes('subscribers_email_key')) {
+                    // This is a duplicate email error - handle gracefully
+                    // We can either reject or treat as success (if you want to avoid telling users they're already signed up)
+                    setIsSuccess(true); // Just treat as success - they're already signed up anyway
+                    setEmail('');
+                    setName('');
+                } else {
+                    // Some other error occurred
+                    throw new Error(supabaseError.message || 'Something went wrong. Please try again later.');
+                }
+            } else {
+                // Success with new subscription
+                setIsSuccess(true);
+                setEmail('');
+                setName('');
             }
-
-            setIsSuccess(true);
-            setEmail('');
-            setName('');
             
             // Reset success state after 5 seconds
             setTimeout(() => {

@@ -94,10 +94,18 @@ function RequestMoreInfo() {
                 ]);
 
             if (supabaseError) {
-                throw new Error(supabaseError.message || 'Something went wrong. Please try again later.');
+                // Check for duplicate error (if you have a unique constraint on any fields)
+                if (supabaseError.code === '23505' || supabaseError.message.includes('duplicate key value')) {
+                    // Handle duplicate gracefully - either treat as success or show a specific message
+                    // For example, if you have unique constraint on contact_info:
+                    setIsSuccess(true); // Treat as success
+                } else {
+                    throw new Error(supabaseError.message || 'Something went wrong. Please try again later.');
+                }
+            } else {
+                setIsSuccess(true);
             }
             
-            setIsSuccess(true);
             setFormData({
                 company: '',
                 role: '',
