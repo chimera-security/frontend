@@ -37,7 +37,7 @@ function Hero() {
                 <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
               </div>
             </NavLink>
-            <NavLink href="#request-demo" className="relative group block">
+            <NavLink href="#request-info" className="relative group block">
               <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg blur opacity-75 group-hover:opacity-100 transition duration-500"></div>
               <div className="relative px-8 py-4 bg-dark rounded-lg flex items-center">
                 <span>Request Information</span>

@@ -347,7 +347,7 @@ function AICapabilities() {
                                 >
                                     <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full blur-sm opacity-90 group-hover:opacity-100 transition-all duration-500 group-hover:blur-md"></div>
                                     <div className="relative px-8 py-4 bg-black rounded-full flex items-center border border-white/10 group-hover:border-white/20 transition-all duration-300">
-                                        <span className="font-medium">Join Beta Program</span>
+                                        <span className="font-medium">Join Beta</span>
                                         <ChevronRight className="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
                                     </div>
                                 </a>

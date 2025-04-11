@@ -158,7 +158,7 @@ function SignUpForm() {
                             >
                                 <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg blur opacity-70 group-hover:opacity-100 transition duration-500"></div>
                                 <div className="relative px-6 py-4 bg-dark rounded-lg flex items-center justify-center">
-                                <span className="mr-2">{isSubmitting ? 'Processing...' : 'Join Beta Program'}</span>
+                                <span className="mr-2">{isSubmitting ? 'Processing...' : 'Join Beta'}</span>
                                 <ArrowRight className={`w-4 h-4 transition-transform duration-300 ${isSubmitting ? 'animate-pulse' : 'group-hover:translate-x-1'}`} />
                                 </div>
                             </button>
