@@ -17,10 +17,11 @@ function RequestMoreInfo() {
     const [error, setError] = useState('');
     
     const roles = [
+        'CEO / CTO',
+        'CIO / CISO',
         'Security Engineer',
         'Security Architect',
-        'CIO/CISO',
-        'DevOps Engineer',
+        'Engineer',
         'IT Manager',
         'Other'
     ];
@@ -28,6 +29,7 @@ function RequestMoreInfo() {
     const interestOptions = [
         'Machine identity inventory',
         'Credential lifecycle management',
+        'Inline Enforcement',
         'Compliance reporting',
         'Threat detection',
         'Integration with existing tools'
