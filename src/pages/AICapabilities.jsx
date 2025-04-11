@@ -161,12 +161,10 @@ function AICapabilities() {
                     <a 
                         href="/#intelligence" 
                         onClick={handleBackClick}
-                        className="inline-flex items-center text-blue-400 hover:text-blue-300 transition-all duration-300 group"
+                        className="inline-flex items-center text-white/70 hover:text-white transition-all duration-300 backdrop-blur-sm bg-white/5 px-4 py-2 rounded-lg border border-white/5 hover:border-white/10"
                     >
-                        <div className="relative overflow-hidden mr-2 w-6">
-                            <ArrowLeft className="w-4 h-4 transition-transform duration-300 transform group-hover:-translate-x-3" />
-                        </div>
-                        <span className="font-medium">Back to main page</span>
+                        <ArrowLeft className="w-4 h-4 mr-2 opacity-70 group-hover:opacity-100" />
+                        <span className="font-medium text-sm">Back</span>
                     </a>
                     
                     <a 
