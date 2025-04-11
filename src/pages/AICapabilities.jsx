@@ -165,7 +165,6 @@ function AICapabilities() {
                     >
                         <div className="relative overflow-hidden mr-2 w-6">
                             <ArrowLeft className="w-4 h-4 transition-transform duration-300 transform group-hover:-translate-x-3" />
-                            <ArrowLeft className="w-4 h-4 absolute top-0 transition-transform duration-300 transform translate-x-4 group-hover:translate-x-0" />
                         </div>
                         <span className="font-medium">Back to main page</span>
                     </a>
